@@ -51,15 +51,15 @@ class VillageState {
 function runRobot(state, robot, memory) {
   for (let turn = 0;; turn++) {
     if (state.parcels.length == 0) {
-      console.log(`Done in ${turn} turns`);
-      break;
+      //console.log(`Done in ${turn} turns`);
+      return turn;
     }
    // console.log(state,"is state init");
     let action = robot(state, memory);
    // console.log(action,"is randomRobot-state-and-memory");
     state = state.move(action.direction);
     memory = action.memory;
-    console.log(`Moved to ${action.direction}`); 
+    //console.log(`Moved to ${action.direction}`); 
 
   } 
 }
@@ -155,4 +155,5 @@ function goalOrientedRobot({place,parcels},route){
   		return {direction:route[0],memory:route.slice(1)};
 }
 
-runRobot(VillageState.random(1),goalOrientedRobot,[]);
+runRobot(VillageState.random(2),goalOrientedRobot,[]);
+
